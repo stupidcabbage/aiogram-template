@@ -1,6 +1,6 @@
 import jinja2
 
-import telegram_bot.config as config
+import src.config as config
 
 
 async def render_template(template_name: str, data: dict | None= None) -> str:

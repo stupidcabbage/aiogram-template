@@ -4,7 +4,7 @@ from typing import Optional
 from sqlalchemy import func, select
 
 from .session import Session
-from telegram_bot.db.models import User
+from src.db.models import User
 
 
 async def get_users_count() -> int:

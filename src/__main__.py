@@ -3,18 +3,17 @@ import logging
 import sys
 from typing import NoReturn
 
-from aiogram import Bot, Dispatcher
-from aiogram.enums import ParseMode
+from aiogram import Dispatcher
 
-from telegram_bot.config import BOT_TOKEN
-from telegram_bot.telegram.handlers import admin, start
+from src.config import bot
+from src.telegram.handlers import admin, start
 
 HANDLERS = (admin.router, start.router)
 dp = Dispatcher()
 
 
 async def main() -> NoReturn:
-    bot = Bot(BOT_TOKEN, parse_mode=ParseMode.HTML)
+    await bot.delete_webhook()
     for handler in HANDLERS:
         dp.include_router(handler)
     

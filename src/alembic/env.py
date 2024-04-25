@@ -16,7 +16,7 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 
-from db.models import Base
+from src.db.models import Base
 
 target_metadata = Base.metadata
 config.set_main_option("sqlalchemy.url", f"sqlite:///{PATH_TO_DB}")
