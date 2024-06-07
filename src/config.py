@@ -1,11 +1,10 @@
 import os
+from pathlib import Path
 from typing import Any
 
 from aiogram import Bot
+from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-
-from pathlib import Path
-
 
 BASE_DIR = Path(__file__).resolve().parent
 TEMPLATES_DIR = BASE_DIR / "templates"
@@ -22,7 +21,7 @@ class Env:
         if not token:
             raise self.ObligatoryValueFromEnvDoesNotExists
         return token
-    
+
     def get_without_checking(self, key, default) -> str:
         return os.getenv(key, default)
 
@@ -30,8 +29,13 @@ class Env:
         def __str__(self):
             return "Obligatory token does not exists! Check env file."
 
+
 env = Env()
 
 BOT_TOKEN = env.get("BOT_TOKEN")
 
-bot = Bot(BOT_TOKEN, parse_mode=ParseMode.HTML)
+SERVER_DOMEN = env.get("SERVER_DOMEN")
+TELEGRAM_WEBHOOK_URL = f"https://{SERVER_DOMEN}/webhook"
+TELEGRAM_SECRET_TOKEN = env.get("TELEGRAM_SECRET_TOKEN")
+
+bot = Bot(BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))

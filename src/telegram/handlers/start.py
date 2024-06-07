@@ -4,7 +4,6 @@ from aiogram.filters import CommandStart
 from src.db.crud.users import create_user, is_user_exists
 from src.templates import render_template
 
-
 router = Router()
 
 

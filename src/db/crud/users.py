@@ -3,8 +3,9 @@ from typing import Optional
 
 from sqlalchemy import func, select
 
-from .session import Session
 from src.db.models import User
+
+from .session import Session
 
 
 async def get_users_count() -> int:

@@ -1,8 +1,8 @@
 from aiogram import Router, types
 from aiogram.filters import Command
 
-from src.templates import render_template
 from src.db.crud.users import get_user, get_users_count
+from src.templates import render_template
 
 router = Router()
 
