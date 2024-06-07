@@ -1,13 +1,11 @@
+import logging
 from typing import Annotated
 
-from fastapi import APIRouter, Header
 from aiogram import types
-
-import logging
+from fastapi import APIRouter, Header
 
 from src.bot import bot, dp
 from src.config import TELEGRAM_SECRET_TOKEN
-
 
 root_router = APIRouter(
     prefix="",
